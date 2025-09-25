@@ -1,3 +1,24 @@
+[ -f "/home/matthew/.ghcup/env" ] && . "/home/matthew/.ghcup/env" # ghcup-env
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/matthew/.dart-cli-completion/zsh-config.zsh ]] && . /home/matthew/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/go/bin
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/home/matthew/.opam/opam-init/init.zsh' ]] || source '/home/matthew/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration
+
+
+
+
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 eval "$(fzf --zsh)"
 
