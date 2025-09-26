@@ -1,9 +1,10 @@
 #!/bin/bash
 
-yay -S --noconfirm hyprland hyprlock hypridle hyprsunset zen-browser-bin ungoogled-chromium-bin hyprshot python bluetui impala pavucontrol brightnessctl playerctl ttf-font-awesome ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols gum
+yay -S --noconfirm - < packages.txt
 
 mkdir -p ~/.config
 mkdir -p ~/.local/share/dev
 mkdir -p ~/workspace
 git clone https://github.com/rmuell9/linux ~/.config
+rm -rf ~/.config/hypr
 mv ~/.config/linux/hypr ~/.config/hypr
