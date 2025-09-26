@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Trigger ghostty config reload
+if pgrep -x ghostty &> /dev/null; then
+  ghostty_addresses=$(hyprctl clients -j | jq -r '.[] | select(.class == "com.mitchellh.ghostty") | .address')
+  
+  if [[ -n "$ghostty_addresses" ]]; then
+    # Save current active window or workspace
+    current_window=$(hyprctl activewindow -j | jq -r '.address')
+    current_workspace=$(hyprctl activeworkspace -j | jq -r '.id')
+    
+    # Focus each ghostty window and send reload key combo
+    while IFS= read -r address; do
+      hyprctl dispatch focuswindow "address:$address"
+      sleep 0.1
+      hyprctl dispatch sendshortcut "CTRL SHIFT, comma, address:$address"
+    done <<< "$ghostty_addresses"
+    
+    # Return focus to original window or workspace
+    if [[ -n "$current_window" && "$current_window" != "null" ]]; then
+      hyprctl dispatch focuswindow "address:$current_window"
+    else
+      hyprctl dispatch workspace "$current_workspace"
+    fi
+  fi
+fi
