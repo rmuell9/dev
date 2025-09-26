@@ -1,0 +1,6 @@
+#!/bin/bash
+
+yay -S neovim --noconfirm
+rm -rf ~/.config/nvim
+git clone https://github.com/rmuell9/neovim ~/.config
+mv ~/.config/neovim ~/.config/nvim

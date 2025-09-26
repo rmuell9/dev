@@ -1,0 +1,5 @@
+#!/bin/bash
+
+yay -S --noconfirm ghostty
+rm -rf ~/.config/ghostty
+mv ~/.config/linux/ghostty ~/.config/ghostty

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+hyprctl hyprpaper listactive | grep "eDP-1" | cut -d' ' -f3

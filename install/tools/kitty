@@ -1,0 +1,5 @@
+#!/bin/bash
+
+yay -S --noconfirm kitty
+rm -rf ~/.config/kitty
+mv ~/.config/linux/kitty ~/.config/kitty

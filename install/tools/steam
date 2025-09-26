@@ -1,0 +1,3 @@
+#!/bin/bash
+
+yay -S --noconfirm steam wine winetrick unrar

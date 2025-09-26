@@ -1,0 +1,6 @@
+#!/bin/bash
+
+yay -S zsh --noconfirm
+sudo chsh -s $(which zsh)
+rm ~/.zshrc
+cp ../../defaults/.zshrc ~/
