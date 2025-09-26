@@ -14,16 +14,18 @@ if [[ $current == "'Adwaita'" ]]; then
     rm -rf ~/.local/share/dev/themes/current
     ln -s ~/.local/share/dev/themes/dark ~/.local/share/dev/themes/current
 
+    makoctl reload
+    notify-send "Dark Mode"
+    
     #Switch wallpapers
     hyprctl hyprpaper preload "~/.local/share/dev/themes/current/background.png"
     hyprctl hyprpaper wallpaper "eDP-1,~/.local/share/dev/themes/current/background.png"
 
-    makoctl reload
+    killall waybar && waybar
     reload-ghostty
-    notify-send "Switched to Dark Theme"
 fi
 
-if [[ $current == *"Adwaita-dark"* ]]; then
+if [[ $current == "'Adwaita-dark'" ]]; then
     # Switch to light gnome theme
     gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"
     gsettings set org.gnome.desktop.interface color-scheme "prefer-light"
@@ -34,11 +36,13 @@ if [[ $current == *"Adwaita-dark"* ]]; then
     rm -rf ~/.local/share/dev/themes/current
     ln -s ~/.local/share/dev/themes/light ~/.local/share/dev/themes/current
 
+    makoctl reload
+    notify-send "Light Mode"
+
     #Switch wallpapers
     hyprctl hyprpaper preload "~/.local/share/dev/themes/current/background.png"
     hyprctl hyprpaper wallpaper "eDP-1,~/.local/share/dev/themes/current/background.png"
 
-    makoctl reload
+    killall waybar && waybar
     reload-ghostty
-    notify-send "Switched to Light Theme"
 fi
