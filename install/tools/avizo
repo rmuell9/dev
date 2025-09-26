@@ -1,5 +1,0 @@
-#!/bin/bash
-
-yay -S --noconfirm avizo
-rm -rf ~/.config/avizo
-mv ~/.config/linux/avizo ~/.config/avizo

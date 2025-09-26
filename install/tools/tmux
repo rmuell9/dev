@@ -1,5 +1,0 @@
-#!/bin/bash
-
-yay -S tmux --noconfirm
-rm -rf ~/.config/tmux
-mv ~/.config/linux/tmux ~/.config/tmux

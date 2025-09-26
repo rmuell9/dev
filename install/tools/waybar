@@ -1,5 +1,0 @@
-#!/bin/bash
-
-yay -S --noconfirm waybar
-rm -rf ~/.config/waybar
-mv ~/.config/linux/waybar ~/.config/waybar

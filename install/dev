@@ -1,10 +1,6 @@
 #!/bin/bash
 
-yay -S --noconfirm - < packages.txt
-
-mkdir -p ~/.config
-mkdir -p ~/.local/share/dev
-mkdir -p ~/workspace
-git clone https://github.com/rmuell9/linux ~/.config
-rm -rf ~/.config/hypr
-mv ~/.config/linux/hypr ~/.config/hypr
+yay -S --noconfirm < packages.txt
+git clone https://github.com/rmuell9/linux ~/linux
+cp -r mv ~/linux/* ~/.config
+rm -rf ~/linux

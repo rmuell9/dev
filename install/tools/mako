@@ -1,5 +1,0 @@
-#!/bin/bash
-
-yay -S --noconfirm mako
-rm -rf ~/.config/mako
-mv ~/.config/linux/mako ~/.config/mako

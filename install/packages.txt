@@ -18,3 +18,12 @@ ttf-nerd-fonts-symbols
 gum
 socat
 jq
+avizo
+btop
+mako
+ghostty
+kitty
+waybar
+thunar
+tmux
+zathura

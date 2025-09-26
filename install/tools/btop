@@ -1,5 +1,0 @@
-#!/bin/bash
-
-yay -S --noconfirm btop
-rm -rf ~/.config/btop
-mv ~/.config/linux/btio ~/.config/btop
