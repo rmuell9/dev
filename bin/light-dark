@@ -4,39 +4,41 @@
 current=$(gsettings get org.gnome.desktop.interface gtk-theme)
 
 if [[ $current == "'Adwaita'" ]]; then
-    # Switch to dark
+    # Switch to dark gnome theme
     gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
     gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-    cp ~/.local/share/dev/themes/dark/* ~/.local/share/dev/themes/current
+
     hyprctl hyprpaper unload "/home/matthew/.config/backgrounds/background.png"
-    cp ~/.config/backgrounds/preload/weeknd.png ~/.config/backgrounds/background.png
-    hyprctl hyprpaper preload "/home/matthew/.config/backgrounds/background.png"
-    hyprctl hyprpaper wallpaper "eDP-1,/home/matthew/.config/backgrounds/background.png"
-    hyprctl hyprpaper wallpaper "DP-2,/home/matthew/.config/backgrounds/background.png"
-    # sed -i "s/^theme=.*/theme=ayu/" "/home/matthew/.config/ghostty/config"
-    sed -i "s/^    col.active_border = .*/    col.active_border = rgba(00d9ffee)/" "/home/matthew/.config/hypr/settings/aesthetics.conf"
-    sed -i "s/^border-color=.*/border-color=\\#00d9ffee/" "/home/matthew/.config/mako/config"
+    hyprctl hyprpaper unload "~/.local/share/dev/themes/current/background.png"
+    
+    rm -rf ~/.local/share/dev/themes/current
+    ln -s ~/.local/share/dev/themes/dark ~/.local/share/dev/themes/current
+
+    #Switch wallpapers
+    hyprctl hyprpaper preload "~/.local/share/dev/themes/current/background.png"
+    hyprctl hyprpaper wallpaper "eDP-1,~/.local/share/dev/themes/current/background.png"
+
     makoctl reload
     reload-ghostty
     notify-send "Switched to Dark Theme"
-    # hyprsunset -t 4000
 fi
 
 if [[ $current == *"Adwaita-dark"* ]]; then
-    # Switch to light
+    # Switch to light gnome theme
     gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"
     gsettings set org.gnome.desktop.interface color-scheme "prefer-light"
-    cp ~/.local/share/dev/themes/light/* ~/.local/share/dev/themes/current
+
     hyprctl hyprpaper unload "/home/matthew/.config/backgrounds/background.png"
-    cp ~/.config/backgrounds/preload/nord.png ~/.config/backgrounds/background.png
-    hyprctl hyprpaper preload "/home/matthew/.config/backgrounds/background.png"
-    hyprctl hyprpaper wallpaper "eDP-1,/home/matthew/.config/backgrounds/background.png"
-    hyprctl hyprpaper wallpaper "DP-2,/home/matthew/.config/backgrounds/background.png"
-    # sed -i "s/^theme=.*/theme=rose-pine-moon/" "/home/matthew/.config/ghostty/config"
-    sed -i "s/^    col.active_border = .*/    col.active_border = rgba(88ceebee)/" "/home/matthew/.config/hypr/settings/aesthetics.conf"
-    sed -i "s/^border-color=.*/border-color=\\#88ceebee/" "/home/matthew/.config/mako/config"
+    hyprctl hyprpaper unload "~/.local/share/dev/themes/current/background.png"
+
+    rm -rf ~/.local/share/dev/themes/current
+    ln -s ~/.local/share/dev/themes/light ~/.local/share/dev/themes/current
+
+    #Switch wallpapers
+    hyprctl hyprpaper preload "~/.local/share/dev/themes/current/background.png"
+    hyprctl hyprpaper wallpaper "eDP-1,~/.local/share/dev/themes/current/background.png"
+
     makoctl reload
     reload-ghostty
     notify-send "Switched to Light Theme"
-    # pkill hyprsunset
 fi
