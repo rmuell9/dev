@@ -1,8 +1,7 @@
 #!/bin/bash
 
-yay -S --noconfirm < packages.txt
+yay -S --noconfirm --needed < packages.txt
 git clone https://github.com/rmuell9/linux ~/linux
 mkdir -p ~/.config
 mv ~/linux/* ~/.config
-mkdir -p ~/.config/dev
 rm -rf ~/linux

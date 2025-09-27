@@ -22,8 +22,8 @@ avizo
 btop
 mako
 ghostty
-kitty
 waybar
+uv
 thunar
 tmux
 zathura

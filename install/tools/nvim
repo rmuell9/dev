@@ -5,4 +5,5 @@ if ! command -v nvim &>/dev/null; then
     rm -rf ~/.config/nvim
     git clone https://github.com/rmuell9/neovim ~/.config
     mv ~/.config/neovim ~/.config/nvim
+    ln -s ~/.config/dev/current/colors.lua ~/.config/nvim/lua/rmmueller/lazy/theme.lua
 fi

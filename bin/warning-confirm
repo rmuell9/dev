@@ -1,0 +1,18 @@
+#!/bin/bash
+
+while true; do
+    gum spin --spinner "dot" --title "$1 [y/N]" -- sh -c 'while ! test -e /tmp/spinner_done; do sleep 0.1; done' &
+    SPINNER_PID=$!
+    read -n 1 -s response
+    touch /tmp/spinner_done
+    wait $SPINNER_PID
+    rm -f /tmp/spinner_done
+    echo
+    if [[ "$response" == "y" || "$response" == "Y" ]]; then
+        exit 0
+    elif [[ "$response" == "n" || "$response" == "N" || -z "$response" ]]; then
+        exit 1
+    else
+        echo "Invalid input"
+    fi
+done
