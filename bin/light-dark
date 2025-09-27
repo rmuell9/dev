@@ -24,6 +24,7 @@ if [[ $current == "'Adwaita'" ]]; then
     restart waybar
     reload-kitty
     reload-ghostty
+    reload-rofi
 fi
 
 if [[ $current == "'Adwaita-dark'" ]]; then
@@ -47,4 +48,5 @@ if [[ $current == "'Adwaita-dark'" ]]; then
     restart waybar
     reload-kitty
     reload-ghostty
+    reload-rofi
 fi

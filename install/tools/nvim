@@ -1,6 +1,8 @@
 #!/bin/bash
 
-yay -S neovim --noconfirm
-rm -rf ~/.config/nvim
-git clone https://github.com/rmuell9/neovim ~/.config
-mv ~/.config/neovim ~/.config/nvim
+if ! command -v nvim &>/dev/null; then
+    yay -S --noconfirm --needed neovim
+    rm -rf ~/.config/nvim
+    git clone https://github.com/rmuell9/neovim ~/.config
+    mv ~/.config/neovim ~/.config/nvim
+fi

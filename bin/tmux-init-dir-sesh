@@ -1,0 +1,3 @@
+#!/bin/bash
+
+selected_dir=$(find ~ -type d 2>/dev/null | fzf --prompt="Select directory: ") && tmux new-session -s $(basename "$selected_dir") -c $selected_dir -n nvim ";" new-window -c $selected_dir -n zsh ";" select-window -t nvim

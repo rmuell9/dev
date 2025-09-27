@@ -2,7 +2,7 @@
 
 # Trigger ghostty config reload
 if pgrep -x ghostty &> /dev/null; then
-  ghostty_addresses=$(hyprctl clients -j | jq -r '.[] | select(.class == "com.mitchellh.ghostty") | .address')
+  ghostty_addresses=$(hyprctl clients -j | jq -r '.[] | select(.class == "com.mitchellh.ghostty" or .class == "flo.ting") | .address')
   
   if [[ -n "$ghostty_addresses" ]]; then
     # Save current active window or workspace

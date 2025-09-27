@@ -2,5 +2,7 @@
 
 yay -S --noconfirm < packages.txt
 git clone https://github.com/rmuell9/linux ~/linux
-cp -r mv ~/linux/* ~/.config
+mkdir -p ~/.config
+mv ~/linux/* ~/.config
+mkdir -p ~/.config/dev
 rm -rf ~/linux

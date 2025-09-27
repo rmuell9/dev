@@ -1,0 +1,3 @@
+#!/bin/bash
+
+f(){ username=$(echo "$1" | sed -n "s|.*github\.com[/:]\\([^/]*\\)/.*|\\1|p"); repo=$(basename "$1" .git); mkdir -p ~/workspace/github/"$username"; cd ~/workspace/github/"$username"; git clone "$1"; tmux new-session -d -s "$repo" -c "$repo" -n nvim ";" new-window -c "$repo" -n zsh ";" select-window -t nvim;unset -f f;cd -; }; f

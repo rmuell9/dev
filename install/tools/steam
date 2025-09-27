@@ -1,3 +1,13 @@
 #!/bin/bash
 
-yay -S --noconfirm steam wine winetrick unrar
+if ! command -v steam &>/dev/null; then
+    yay -S --noconfirm --needed steam
+fi
+
+if ! command -v wine &>/dev/null; then
+    yay -S --noconfirm --needed wine winetricks
+fi
+
+if ! command -v unrar &>/dev/null; then
+    yay -S --noconfirm --needed unrar
+fi
