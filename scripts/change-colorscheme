@@ -1,0 +1,28 @@
+#!/bin/bash
+
+result=$(cd ~/.config/dev/current/colorschemes && fzf -q preview --preview='kitty icat \
+    --clear \
+    --transfer-mode=memory \
+    --align center \
+    --stdin=no \
+    --unicode-placeholder \
+    --place=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0 \
+    {}'\
+    --preview-window=right:70% \
+    )
+
+if [ -n "$result" ]; then
+    dir=$(dirname "$result")
+    for file in ~/.config/dev/current/colorschemes/"$dir"/*; do
+        filename=$(basename "$file")
+        if [ "$filename" != "preview.png" ] && [ -f "$file" ]; then
+            ln -sf "$file" ~/.config/dev/current/"$filename"
+        fi
+    done
+
+    hyprctl reload
+    makoctl reload
+    restart waybar
+    reload-ghostty
+    reload-rofi
+fi
