@@ -1,6 +1,6 @@
 #!/bin/bash
    
-mkdir -p ~/.config/dev/current
+mkdir -p ~/.config/dev/current/extra
 
 result=$(cd ~/.config/dev/current/extra && fzf -q .png --preview='kitty icat \
     --clear \
@@ -9,7 +9,9 @@ result=$(cd ~/.config/dev/current/extra && fzf -q .png --preview='kitty icat \
     --stdin=no \
     --unicode-placeholder \
     --place=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0 \
-    {}')
+    {}'\
+    --preview-window=right:70% \
+    )
 
 if [ -n "$result" ]; then
     rm -f ~/.config/dev/current/background.png

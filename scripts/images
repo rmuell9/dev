@@ -1,0 +1,12 @@
+#!/bin/bash
+
+fzf --preview='kitty icat \
+    --clear \
+    --transfer-mode=memory \
+    --align center \
+    --stdin=no \
+    --unicode-placeholder \
+    --place=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0 \
+    {}' \
+    --preview-window=right:80% \
+    < <(find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.bmp" -o -iname "*.webp" -o -iname "*.svg" -o -iname "*.tiff" -o -iname "*.tif" \))

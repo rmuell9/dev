@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cp bin/* ~/.local/bin/
+cp scripts/* ~/.local/bin/
 cp -r default/ ~/.local/share/dev/
 cp -r themes/ ~/.local/share/dev/
