@@ -3,3 +3,6 @@
 cp scripts/* ~/.local/bin/
 cp -r default/ ~/.local/share/dev/
 cp -r themes/ ~/.local/share/dev/
+
+cp -P ~/.local/share/dev/themes/dark/extra/* themes/dark/extra/
+cp -P ~/.local/share/dev/themes/light/extra/* themes/light/extra/
