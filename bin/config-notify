@@ -4,7 +4,6 @@ path=$1
 cd $path
 
 dir=$(basename "$PWD")
-capitalized="${dir^}"
-notify-send "Configuration: $capitalized" "$PWD"
+notify-send "Configuration: $dir" "$PWD"
 
 nvim .
