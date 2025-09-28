@@ -25,9 +25,9 @@ if [[ $current == "'Adwaita'" ]]; then
     reload-kitty
     reload-ghostty
     reload-rofi
-fi
 
-if [[ $current == "'Adwaita-dark'" ]]; then
+elif [[ $current == "'Adwaita-dark'" ]]; then
+
     # Switch to light gnome theme
     gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"
     gsettings set org.gnome.desktop.interface color-scheme "prefer-light"

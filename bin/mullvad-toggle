@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if mullvad-status > /dev/null; then
+    mullvad disconnect
+else
+    mullvad connect
+fi

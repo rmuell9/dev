@@ -1,0 +1,9 @@
+#!/bin/bash
+
+status=$(mullvad status | head -n 1)
+if [[ $status == "Connected" ]]; then
+    echo "VPN"
+    exit 0
+else
+    exit 1
+fi
