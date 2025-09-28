@@ -27,3 +27,6 @@ uv
 thunar
 tmux
 zathura
+github-cli
+mullvad-vpn-bin
+iwd

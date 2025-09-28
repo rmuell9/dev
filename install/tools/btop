@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if ! command -v btop &>/dev/null; then
+    yay -S --noconfirm --needed btop
+fi
+
+ln -s ~/.config/dev/current/btop.theme ~/.config/btop/themes/current.theme
