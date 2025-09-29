@@ -10,7 +10,7 @@ f(){
     mkdir -p ~/workspace/github/"$username"
     cd ~/workspace/github/"$username"
     git clone "$1"
-    tmux new-session -d -s "$repo" -c "$repo" -n nvim ";" new-window -c "$repo" -n zsh ";" select-window -t nvim
+    tmux new-session -d -s "$repo" -c "$repo" -n home ";" new-window -c "$repo" -n zsh ";" select-window -t home
     unset -f f
     cd -
 }
