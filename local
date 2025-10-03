@@ -7,6 +7,3 @@ rsync -av --exclude='*/extra' themes/ ~/.local/share/dev/themes/ > /dev/null 2>&
 # Sync backgrounds added with the add-background command
 cp -P ~/.local/share/dev/themes/dark/extra/* themes/dark/extra/
 cp -P ~/.local/share/dev/themes/light/extra/* themes/light/extra/
-
-rsync -r ~/.config/chromium/Default/Extensions default/chromium/Default/
-rsync ~/.config/chromium/Default/Preferences default/chromium/Default/Preferences

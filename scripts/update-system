@@ -1,4 +1,4 @@
 #!/bin/bash
 
-uwsm app -- ghostty --class=flo.ting --config-file=~/.config/ghostty/floating -e zsh -ic "yay -Syu && show-done"
+uwsm app -- ghostty --class=flo.ting --config-file=~/.local/share/dev/default/ghostty/floating -e zsh -ic "yay -Syu && show-done"
 
