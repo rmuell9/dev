@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+uwsm app -- ghostty --class=flo.ting --config-file=~/.local/share/dev/default/ghostty/floating -e zsh -ic "cd ~/Downloads && fzf --multi --bind 'tab:toggle+down'| xargs -I {} -r sh -c 'mv \"{}\" ~/knowledge! >/dev/null 2>&1'"

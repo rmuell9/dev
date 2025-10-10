@@ -3,10 +3,10 @@
 if pgrep -x "waybar" > /dev/null
 then
     pkill waybar
-    pkill hyprsunset
-    hyprctl hyprpaper wallpaper "eDP-1,~/.config/backgrounds/preload/windows.jpg"
+    # pkill hyprsunset
+    # hyprctl hyprpaper wallpaper "eDP-1,~/.config/backgrounds/preload/windows.jpg"
 else
-    notify-send "Interview Mode Disabled"
+    notify-send "Back to normal"
     nohup waybar &
-    hyprctl hyprpaper wallpaper "eDP-1,~/.config/dev/current/background.png"
+    # hyprctl hyprpaper wallpaper "eDP-1,~/.config/dev/current/background.png"
 fi
