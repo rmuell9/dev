@@ -45,6 +45,6 @@ elif [[ $current == "'Adwaita-dark'" ]]; then
     hyprctl hyprpaper wallpaper "eDP-1,~/.config/dev/current/background.png"
 
     restart waybar
-    reload-rofi
     reload-ghostty
+    reload-rofi
 fi

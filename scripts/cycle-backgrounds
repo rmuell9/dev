@@ -1,0 +1,36 @@
+#!/bin/bash
+   
+mkdir -p ~/.config/dev/current/extra
+
+# Get the current linked file
+if [ -L ~/.config/dev/current/background.png ]; then
+    current=$(readlink ~/.config/dev/current/background.png)
+    current_name=$(basename "$current")
+else
+    current_name=""
+fi
+
+# Get all png files in the extras directory
+files=(~/.config/dev/current/extra/*.png)
+
+# Find the next file in the cycle
+found=0
+result=""
+for i in "${!files[@]}"; do
+    if [ "$(basename "${files[$i]}")" = "$current_name" ]; then
+        # Get next index, wrapping around to 0 if at end
+        next_index=$(( (i + 1) % ${#files[@]} ))
+        result=$(basename "${files[$next_index]}")
+        found=1
+        break
+    fi
+done
+
+# If current file not found or no link exists, use first file
+if [ "$found" -eq 0 ] && [ ${#files[@]} -gt 0 ]; then
+    result=$(basename "${files[0]}")
+fi
+
+rm -f ~/.config/dev/current/background.png
+ln -s "$(realpath ~/.config/dev/current/extra/$result)" ~/.config/dev/current/background.png
+restart hyprpaper
