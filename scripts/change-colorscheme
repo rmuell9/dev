@@ -22,6 +22,7 @@ if [ -n "$result" ]; then
         fi
     done
 
+    cp ~/.config/dev/current/colors.lua ~/.config/nvim/lua/rmmueller/lazy
     hyprctl reload
     makoctl reload
     restart waybar

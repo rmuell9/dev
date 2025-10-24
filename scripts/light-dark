@@ -20,6 +20,7 @@ if [[ $current == "'Adwaita'" ]]; then
     #Switch wallpapers
     hyprctl hyprpaper preload "~/.config/dev/current/background.png"
     hyprctl hyprpaper wallpaper "eDP-1,~/.config/dev/current/background.png"
+    hyprctl hyprpaper wallpaper "DP-2,~/.config/dev/current/background.png"
 
     restart waybar
     reload-ghostty
@@ -43,6 +44,7 @@ elif [[ $current == "'Adwaita-dark'" ]]; then
     #Switch wallpapers
     hyprctl hyprpaper preload "~/.config/dev/current/background.png"
     hyprctl hyprpaper wallpaper "eDP-1,~/.config/dev/current/background.png"
+    hyprctl hyprpaper wallpaper "DP-2,~/.config/dev/current/background.png"
 
     restart waybar
     reload-ghostty
