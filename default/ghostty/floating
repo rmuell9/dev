@@ -1,2 +1,3 @@
 font-size = 14
 background-opacity=0.95
+custom-shader = ~/.local/share/dev/default/ghostty/shaders/bettercrt.glsl

@@ -54,5 +54,7 @@ setopt appendhistory
 
 
 if [ "$(tty)" = "/dev/tty1" ]; then
+  docker stop windows
+  docker restart my-searxng
   exec Hyprland
 fi

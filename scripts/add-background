@@ -2,7 +2,7 @@
 
 mkdir -p ~/.config/dev/current/extra
 
-result=$(fzf -q .png --preview='kitty icat \
+result=$(fzf --preview='kitty icat \
     --clear \
     --transfer-mode=memory \
     --align center \

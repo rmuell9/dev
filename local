@@ -2,6 +2,10 @@
 
 cp scripts/* ~/.local/bin/
 cp -r default/ ~/.local/share/dev/
+
+rm -rf ~/.local/share/dev/themes/dark/colorschemes
+rm -rf ~/.local/share/dev/themes/light/colorschemes
+
 rsync -av --exclude='*/extra' themes/ ~/.local/share/dev/themes/ > /dev/null 2>&1
 
 # Sync backgrounds added with the add-background command
