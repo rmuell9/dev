@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for file in ~/knowledge!/*" - libgen.li"*; do
+    if [ -e "$file" ]; then
+        newname="${file// - libgen.li/}"
+        mv "$file" "$newname"
+    fi
+done
+
+uwsm app -- ghostty --class=flo.ting --config-file=~/.local/share/dev/default/ghostty/floating -e zsh -ic "cd ~/knowledge! && fzf --multi --bind 'tab:toggle+down'| xargs -I {} -r sh -c 'nohup zathura \"{}\" >/dev/null 2>&1 & exit'"

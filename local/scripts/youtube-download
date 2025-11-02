@@ -1,0 +1,23 @@
+#!/bin/bash
+
+link="$1"
+session_name="download_$(date +%s)"
+
+tmux new-session -d -s "$session_name" "
+playlist_name=\$(yt-dlp --get-filename -o \"%(playlist_title)s\" \"$link\" 2>/dev/null | head -n1)
+if [ -d \"\$HOME/workspace/videos/\$playlist_name\" ]; then
+    rm -rf \"\$HOME/workspace/videos/\$playlist_name\"
+fi
+mkdir -p \"\$HOME/workspace/videos/\$playlist_name\"
+cd \"\$HOME/workspace/videos/\$playlist_name\"
+yt-dlp -f \"bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best\" \
+    --no-warnings \
+    --quiet \
+    --progress \
+    --retries 10 \
+    --fragment-retries 10 \
+    --concurrent-fragments 1 \
+    --buffer-size 16K \
+    \"$link\"
+tmux kill-session -t \"$session_name\"
+"

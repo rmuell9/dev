@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Copy local/scripts to ~/.local/bin
+rm -rf ~/.local/bin && cp -r local/scripts ~/.local/bin
+
+# Sync configs
+cp -r local/default/ ~/.local/share/dev/default/
+cp -r config/* ~/.config/
+
+rm -rf ~/.local/share/dev/themes/{dark,light}/colorschemes
+rsync -av --exclude='*/extra' themes/ ~/.local/share/dev/themes/ >/dev/null
+
+# Sync backgrounds
+rm -rf themes/{dark,light}/extra
+cp -r ~/.local/share/dev/themes/dark/extra/ themes/dark/extra/
+cp -r ~/.local/share/dev/themes/light/extra/ themes/light/extra/
+
+hyprctl reload >/dev/null
+restart waybar
+makoctl reload
+reload-ghostty >/dev/null
+reload-rofi

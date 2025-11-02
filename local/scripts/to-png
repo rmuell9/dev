@@ -1,0 +1,16 @@
+#!/bin/bash
+
+result=$(fzf --preview='kitty icat \
+    --clear \
+    --transfer-mode=memory \
+    --align center \
+    --stdin=no \
+    --unicode-placeholder \
+    --place=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0 \
+    {}'\
+    --preview-window=right:70% \
+    )
+
+if [ -n "$result" ]; then
+    mogrify -format png $result
+fi

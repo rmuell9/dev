@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo
-gum spin --spinner "monkey" --title "Done! Press any key to close..." -- zsh -c 'read -n 1 -s'
-

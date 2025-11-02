@@ -1,2 +1,3 @@
-default/zsh/keys.sh
-default/hypr/bindings/personal.conf
+config/nvim
+local/default/zsh/keys.sh
+local/default/hypr/bindings/personal.conf

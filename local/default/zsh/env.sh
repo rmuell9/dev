@@ -1,0 +1,63 @@
+[ -f "/home/matthew/.ghcup/env" ] && . "/home/matthew/.ghcup/env" # ghcup-env
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/matthew/.dart-cli-completion/zsh-config.zsh ]] && . /home/matthew/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/go/bin
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/home/matthew/.opam/opam-init/init.zsh' ]] || source '/home/matthew/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration
+
+
+
+
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+eval "$(fzf --zsh)"
+
+function parse_git_branch() {
+    local branch=$(git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/\1/p')
+    if [[ "$branch" == "(no branch, rebasing master)"* ]]; then
+        echo ""
+    else
+        echo "$branch"
+    fi
+}
+
+COLOR_DEF=$'%f'
+COLOR_GIT=$'%F{117}'
+COLOR_PINK=$'%F{210}'
+setopt PROMPT_SUBST
+
+#git:(main)
+
+# export PROMPT='%1~%b $(git branch 2>/dev/null >/dev/null && [[ -n "$(parse_git_branch)" ]] && echo "${COLOR_GIT}git:(${COLOR_PINK}$(parse_git_branch)%b${COLOR_GIT})${COLOR_DEF} ")'
+
+#_main_
+export PROMPT='%1~$(git branch 2>/dev/null >/dev/null && [[ -n "$(parse_git_branch)" ]] && echo " %{\e[3m%}$(parse_git_branch)%{\e[0m%}") > '
+
+# rose pine
+export FZF_DEFAULT_OPTS="
+	--color=fg:#908caa,hl:#ebbcba
+	--color=fg+:#e0def4,hl+:#ebbcba
+	--color=border:#403d52,header:#31748f,gutter:#191724
+	--color=spinner:#f6c177,info:#9ccfd8
+	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
+
+#CTRL-r for fzf CL history
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+
+if [ "$(tty)" = "/dev/tty1" ]; then
+  exec Hyprland
+fi

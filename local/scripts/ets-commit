@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pushd ~/workspace/github/rmuell9/dev/config/nvim
+git add .
+git commit -m "update"
+git push
+popd
+
+pushd ~/workspace/github/rmuell9/dev
+git add .
+git commit -m "update"
+git push
+popd
