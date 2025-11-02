@@ -5,7 +5,8 @@ rm -rf ~/.local/bin && cp -r local/scripts ~/.local/bin
 
 # Sync configs
 cp -r local/default/ ~/.local/share/dev/default/
-rsync -av --exclude='.git' config/* ~/.config/ >/dev/null
+rsync -av --exclude='.git' config/nvim ~/.config/ >/dev/null
+rsync -av --exclude='.git' --exclude='.gitignore' config/linux/* ~/.config/ >/dev/null
 
 rm -rf ~/.local/share/dev/themes/{dark,light}/colorschemes
 rsync -av --exclude='*/extra' themes/ ~/.local/share/dev/themes/ >/dev/null

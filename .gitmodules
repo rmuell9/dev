@@ -1,3 +1,6 @@
 [submodule "default/nvim"]
 	path = default/nvim
 	url = https://github.com/rmuell9/neovim
+[submodule "config/linux"]
+	path = config/linux
+	url = https://github.com/rmuell9/linux
