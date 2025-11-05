@@ -3,6 +3,11 @@
 for file in ~/knowledge!/*" - libgen.li"*; do
     if [ -e "$file" ]; then
         newname="${file// - libgen.li/}"
+        if [[ "$newname" =~ \.pdf ]]; then
+            newname="${newname%%\.pdf*}.pdf"
+        elif [[ "$newname" =~ \.epub ]]; then
+            newname="${newname%%\.epub*}.epub"
+        fi
         mv "$file" "$newname"
     fi
 done

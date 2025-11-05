@@ -1,21 +1,33 @@
 #!/bin/bash
 
-# Copy local/scripts to ~/.local/bin
-rm -rf ~/.local/bin && cp -r local/scripts ~/.local/bin
+# Copy local/scripts to PATH
+rm -rf ~/.local/share/dev/scripts && cp -r local/scripts ~/.local/share/dev/scripts
 
-# Sync configs
-cp -r local/default/ ~/.local/share/dev/default/
-rsync -av --exclude='.git' config/nvim ~/.config/ >/dev/null
-rsync -av --exclude='.git' --exclude='.gitignore' config/linux/* ~/.config/ >/dev/null
+# configs
+cp -r local/default/ ~/.local/share/dev/
+for dir in config/linux/*/; do
+    dir_name=$(basename "$dir")
+    if [ -d "$HOME/.config/$dir_name" ]; then
+        rsync -av --delete --exclude='.git' --exclude='.gitignore' \
+            "$HOME/.config/$dir_name/" "config/linux/$dir_name/" >/dev/null
+    else
+        rm -rf "$dir"
+    fi
+done
 
+# nvim
+rsync -av --delete --exclude='.git' ~/.config/nvim/ config/nvim/ >/dev/null
+
+# colorschemes
 rm -rf ~/.local/share/dev/themes/{dark,light}/colorschemes
 rsync -av --exclude='*/extra' themes/ ~/.local/share/dev/themes/ >/dev/null
 
-# Sync backgrounds
+# backgrounds
 rm -rf themes/{dark,light}/extra
 cp -r ~/.local/share/dev/themes/dark/extra/ themes/dark/extra/
 cp -r ~/.local/share/dev/themes/light/extra/ themes/light/extra/
 
+# refresh
 hyprctl reload >/dev/null
 restart waybar
 makoctl reload
