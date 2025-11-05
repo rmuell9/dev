@@ -20,12 +20,12 @@ rsync -av --delete --exclude='.git' ~/.config/nvim/ config/nvim/ >/dev/null
 
 # colorschemes
 rm -rf ~/.local/share/dev/themes/{dark,light}/colorschemes
-rsync -av --exclude='*/extra' themes/ ~/.local/share/dev/themes/ >/dev/null
+rsync -av --exclude='*/extra' local/themes/ ~/.local/share/dev/themes/ >/dev/null
 
 # backgrounds
-rm -rf themes/{dark,light}/extra
-cp -r ~/.local/share/dev/themes/dark/extra/ themes/dark/extra/
-cp -r ~/.local/share/dev/themes/light/extra/ themes/light/extra/
+rm -rf local/themes/{dark,light}/extra
+cp -r ~/.local/share/dev/themes/dark/extra/ local/themes/dark/extra/
+cp -r ~/.local/share/dev/themes/light/extra/ local/themes/light/extra/
 
 # refresh
 hyprctl reload >/dev/null
