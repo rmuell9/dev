@@ -1,0 +1,21 @@
+#!/bin/bash
+
+gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"
+gsettings set org.gnome.desktop.interface color-scheme "prefer-light"
+
+hyprctl hyprpaper unload "~/.config/dev/current/background.png"
+
+rm -rf ~/.config/dev/current
+ln -s ~/.local/share/dev/themes/light ~/.config/dev/current
+
+hyprctl reload > /dev/null
+makoctl reload
+notify-send "Light Mode"
+
+hyprctl hyprpaper preload "~/.config/dev/current/background.png"
+hyprctl hyprpaper wallpaper "eDP-1,~/.config/dev/current/background.png"
+hyprctl hyprpaper wallpaper "DP-2,~/.config/dev/current/background.png"
+
+restart waybar
+reload-ghostty > /dev/null
+reload-rofi
