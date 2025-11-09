@@ -19,5 +19,7 @@ yt-dlp -f \"bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best\" \
     --concurrent-fragments 1 \
     --buffer-size 16K \
     \"$link\"
+video_name=\$(yt-dlp --get-filename -o \"%(title)s\" \"$link\" 2>/dev/null | head -n1)
+notify-send \"Download Complete\" \"\$video_name\"
 tmux kill-session -t \"$session_name\"
 "

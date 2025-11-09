@@ -1,4 +1,5 @@
-hyprland
+hyprland-git
+rsync
 hyprpaper
 hyprlock
 hypridle
@@ -30,3 +31,9 @@ zathura
 github-cli
 mullvad-vpn-bin
 iwd
+nvim
+poweralertd
+youtube-tui
+cointop
+tickrs
+eza
