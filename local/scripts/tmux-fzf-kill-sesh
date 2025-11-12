@@ -1,3 +1,11 @@
 #!/bin/bash
 
-tmux kill-session -t $(tmux ls -F "#{session_name}" 2>/dev/null | fzf --prompt="Select session: " --height=10 --reverse)
+tmux ls -F "#{session_name}" 2>/dev/null | \
+fzf --prompt="Select session(s) to kill: " \
+    --height=10 \
+    --reverse \
+    --multi \
+    --bind 'tab:toggle+down' | \
+while IFS= read -r session; do
+    tmux kill-session -t "$session"
+done
