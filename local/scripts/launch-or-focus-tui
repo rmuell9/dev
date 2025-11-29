@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <application>"
+    exit 1
+fi
+
+APP="$1"
+
+# Check if the application is running
+if pgrep -x "$APP" > /dev/null; then
+    # Get the window class or title
+    WINDOW=$(hyprctl clients -j | jq -r ".[] | select(.class == \"$APP\" or 
+        .title == \"$APP\" or .initialClass == \"$APP\") | .address" | 
+        head -1)
+    
+    if [ -n "$WINDOW" ]; then
+        # Focus the window
+        hyprctl dispatch focuswindow address:$WINDOW
+    fi
+else
+    # Launch the application
+    $APP &
+fi

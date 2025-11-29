@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rfkill unblock wifi
+pkill impala
+ghostty --class=flo.ting --config-file=~/.local/share/dev/default/ghostty/floating -e impala
