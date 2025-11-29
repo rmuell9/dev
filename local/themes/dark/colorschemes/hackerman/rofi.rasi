@@ -1,0 +1,5 @@
+* {
+    background: #0B0C16;
+    foreground: #ddf7ff;
+    border-color: rgba(134, 167, 223, 1);
+}
